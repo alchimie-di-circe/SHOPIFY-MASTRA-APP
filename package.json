@@ -1,0 +1,57 @@
+{
+  "name": "shopify-mastra-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shopify AI Management Suite - Desktop/Web App with Mastra + Pydantic AI + E2B",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "type-check": "tsc --noEmit",
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy",
+    "electron:dev": "electron .",
+    "electron:build": "electron-builder"
+  },
+  "dependencies": {
+    "@mastra/core": "^0.1.0",
+    "@mastra/mcp": "^0.1.0",
+    "@anthropic-ai/sdk": "^0.27.0",
+    "@e2b/code-interpreter": "^0.0.7",
+    "convex": "^1.16.0",
+    "@clerk/sveltekit": "^0.5.0",
+    "svelte": "^4.2.0",
+    "@sveltejs/kit": "^2.0.0",
+    "vite": "^5.0.0"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-vercel": "^5.0.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "svelte-check": "^3.6.0",
+    "tslib": "^2.6.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-svelte": "^2.35.0",
+    "prettier": "^3.1.0",
+    "prettier-plugin-svelte": "^3.1.0",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "vitest": "^1.0.0",
+    "@vitest/ui": "^1.0.0",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
