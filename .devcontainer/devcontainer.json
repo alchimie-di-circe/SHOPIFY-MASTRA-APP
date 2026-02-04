@@ -1,0 +1,59 @@
+{
+  "name": "Shopify AI Suite",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "svelte.svelte-vscode",
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[svelte]": {
+          "editor.defaultFormatter": "svelte.svelte-vscode"
+        },
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "tailwindCSS.experimental.classRegex": [
+          ["class:\\s*\"([^\"]*)\"", "\"([^\"]*)\""],
+          ["class=\"([^\"]*)\""]
+        ]
+      }
+    }
+  },
+  
+  "postCreateCommand": "npm install && pip install pydantic-ai anthropic",
+  
+  "forwardPorts": [5173, 3000, 8080],
+  
+  "portsAttributes": {
+    "5173": {
+      "label": "SvelteKit Dev",
+      "onAutoForward": "notify"
+    },
+    "3000": {
+      "label": "Convex Dashboard"
+    },
+    "8080": {
+      "label": "Preview Server"
+    }
+  },
+  
+  "remoteEnv": {
+    "NODE_ENV": "development"
+  }
+}
