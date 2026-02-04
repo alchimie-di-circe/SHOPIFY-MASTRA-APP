@@ -1,6 +1,6 @@
 # Shopify AI Management Suite
 
-**Shopify AI-Powered Management Desktop/Web App**
+**Shopify AI-Powered Management Web App**
 
 Centralizza la gestione completa del tuo Shopify store con AI assistants, bulk operations, e workflow automation.
 
@@ -15,7 +15,6 @@ Centralizza la gestione completa del tuo Shopify store con AI assistants, bulk o
 
 ### AI Layer
 - **Mastra** - Multi-agent orchestration
-- **Pydantic AI** - Task-specific agents
 - **E2B Sandbox** - Safe code execution
 - **Shopify MCP** - Tool integration
 - **Claude 3.5 Sonnet** - Primary LLM
@@ -38,7 +37,8 @@ Centralizza la gestione completa del tuo Shopify store con AI assistants, bulk o
 SHOPIFY-MASTRA-APP/
 ├── .devcontainer/          # GitHub Codespaces config
 ├── .factory/               # Factory.ai droids & templates
-│   ├── droids/            # AI agent definitions
+│   ├── droids/            # CLI droids (dev-time)
+│   ├── agents/            # Production agents (runtime)
 │   ├── templates/         # Reusable templates
 │   └── knowledge/         # Knowledge base
 ├── .github/
@@ -135,7 +135,7 @@ npm run dev
 - [Product Requirements (PRD)](./docs/prd.md)
 - [System Architecture](./docs/architecture.md)
 - [API Documentation](./docs/api/)
-- [Factory.ai Droids](./docs/factory-droids.md)
+- [Factory.ai Droids](./.factory/README.md)
 
 ## 🛠️ Development
 
@@ -150,17 +150,26 @@ npm run lint         # Lint code
 npm run type-check   # TypeScript checks
 ```
 
-### Factory.ai Droids
+### Factory.ai CLI Droids
 
-Il progetto usa Factory.ai per coordinare AI agents specializzati:
+Il progetto usa Factory.ai per coordinare CLI droids specializzati durante lo sviluppo:
 
-- `@ai` - AI Integration Engineer (orchestrazione)
-- `@theme` - Theme Architect (Liquid/CSS)
-- `@product` - Product Specialist (SEO, content)
-- `@email` - Email Marketing Expert
-- `@seo` - SEO Optimizer
+**CLI Droids (Dev-Time):**
+- `@mastra` - Mastra AI framework expert
+- `@convex` - Convex backend expert
+- `@svelte` - SvelteKit frontend expert
+- `@shopify` - Shopify API/CLI expert
+- `@devops` - CI/CD & deployment expert
+- `@testing` - QA & E2B sandbox testing expert
 
-Vedi [Factory Droids Documentation](./docs/factory-droids.md)
+**Production Agents (Runtime):**
+- `themeEditorAgent` - Modifica temi Shopify
+- `seoOptimizerAgent` - Ottimizza SEO
+- `csvValidatorAgent` - Valida CSV bulk
+- `emailCopyAgent` - Genera email copy
+- `productDescriptionAgent` - Crea descrizioni
+
+Vedi [Factory.ai Documentation](./.factory/README.md)
 
 ## 🚀 Deployment
 
@@ -169,15 +178,14 @@ Vedi [Factory Droids Documentation](./docs/factory-droids.md)
 vercel deploy
 ```
 
-### Desktop App (Electron)
-```bash
-npm run electron:build
-```
+GitHub Actions deploy automaticamente su:
+- **Staging:** Push su `develop` branch
+- **Production:** Push su `main` branch
 
-GitHub Actions compila automaticamente per:
-- macOS (arm64 + x64)
-- Windows (x64)
-- Linux (x64)
+<!-- 
+### Desktop App (Future - Post-MVP)
+Electron packaging sarà aggiunto nella Phase 5 (Week 13-14)
+-->
 
 ## 🤝 Contributing
 
@@ -194,7 +202,6 @@ MIT License - vedi [LICENSE](./LICENSE)
 ## 🙏 Acknowledgments
 
 - [Mastra](https://mastra.ai) - AI orchestration framework
-- [Pydantic AI](https://ai.pydantic.dev) - Python AI agents
 - [E2B](https://e2b.dev) - Code execution sandboxes
 - [Convex](https://convex.dev) - Real-time database
 - [SvelteKit](https://kit.svelte.dev) - Web framework
